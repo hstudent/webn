@@ -1,3 +1,4 @@
 #start unicorn 
+kill $(cat gunicorn.pid)
 gunicorn -c gunicorn_cfg.py ask.wsgi:application --daemon
 

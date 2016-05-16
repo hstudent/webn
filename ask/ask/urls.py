@@ -16,15 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
+from django.conf.urls import patterns
 import django.views.defaults
 
-urlpatterns = [
-    #url(r'^admin/', admin.site.urls),
-    #url(r'^question/', include('qa.urls')),
-    url(r'^question/(\d+)/$', 'qa.views.test'),
-    url(r'^login/',  django.views.defaults.page_not_found, {'exception':''}),
-    url(r'^signup/',  django.views.defaults.page_not_found, {'exception':''}),
-    url(r'^ask/', django.views.defaults.page_not_found, {'exception':''}),
-    url(r'popular/',  django.views.defaults.page_not_found, {'exception':''}),
-    url(r'new/', django.views.defaults.page_not_found, {'exception':''}),
-]
+urlpatterns = patterns('qa.views', 
+    url(r'^$', 'test'),
+    url(r'^question/(\d+)/$', 'test', name='questions'),
+    url(r'^login/',  'test', name='login'),
+    url(r'^signup/', 'test', name='signup'),
+    url(r'^ask/', 'test', name='ask'),
+    url(r'popular/', 'test', name='popular'),
+    url(r'new/', 'test', name = 'new'),
+)
