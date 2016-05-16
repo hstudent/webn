@@ -1,0 +1,3 @@
+#start unicorn 
+gunicorn -c gunicorn_cfg.py ask.wsgi:application --daemon
+

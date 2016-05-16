@@ -1,0 +1,3 @@
+#start unicorn 
+gunicorn -c hello_cfg.py hello:app --daemon
+
