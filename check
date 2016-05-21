@@ -1,0 +1,6 @@
+printf "check the hello python app\n"
+curl 127.0.0.1/hello/?p=4
+printf "\ncheck question number app\n"
+curl 127.0.0.1/question/123/
+printf "\ncheck getting jpeg\n"
+#curl 127.0.0.1/img/index.jpeg
