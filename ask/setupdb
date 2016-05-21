@@ -1,0 +1,7 @@
+mysql -u root -e 'drop user askuser'
+mysql -u root -e 'drop database ask'
+mysql -u root -e 'show databases'
+mysql -u root  -e 'create database if not exists ask'
+mysql -u root -e "create user askuser identified by 'pwd'"
+mysql -u root -e "grant all on ask.* to 'askuser'"
+mysql -u askuser -p'pwd' -e 'show databases'
