@@ -19,7 +19,7 @@ def page_view(request, *args, **kwargs):
 	paginator.base_url = '/question/'
 	questions = paginator.page(page)
 	return render(request, 
-		'/home/box/web_/ask/qa/templates/questions.html',
+		'/home/box/web/ask/qa/templates/questions.html',
 		{
 			'questions':questions,
 			'paginator':paginator
@@ -40,7 +40,7 @@ def test(request, *args, **kwargs):
 
 	#question.id = 123
 	return render(request, 
-		'/home/box/web_/ask/qa/templates/question.html', 
+		'/home/box/web/ask/qa/templates/question.html', 
 		{
 			'question':question,
 			'answers':answers
