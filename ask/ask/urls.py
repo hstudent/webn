@@ -20,8 +20,8 @@ from django.conf.urls import patterns
 import django.views.defaults
 
 urlpatterns = patterns('qa.views', 
-    url(r'^$', 'test'),
-    url(r'^question/(\d+)/$', 'test', name='questions'),
+    url(r'^$', 'page_view'),
+    url(r'^question/(\d+)/$', 'test', name='question'),
     url(r'^login/',  'test', name='login'),
     url(r'^signup/', 'test', name='signup'),
     url(r'^ask/', 'test', name='ask'),

@@ -4,14 +4,16 @@ from django.db import models
 
 # Create your models here.
 
-class QuestionManager(models.Manager):                                          
-        def new():                                                              
-                pass                                                            
-        def popular():                                                          
-                pass                                                            
-                                                                                
-class Question(models.Model):                                                   
-        objects = QuestionManager()  
+class QuestionManager(models.Manager):
+        def new():
+                pass
+        def popular():
+                pass
+
+class Question(models.Model):
+	#def get_url(self):
+	#	return '\question\'
+        objects = QuestionManager()
 	title = models.CharField(max_length=256)
 	text = models.TextField()
 	added_at = models.DateTimeField(auto_now_add = True)
