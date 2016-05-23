@@ -30,11 +30,15 @@ def answer_view(request):
 def ask_view(request):
 	if request.method == "POST":
 		form = AskForm(request.POST)
+		print('isvalid')
 		if form.is_valid():
+			print('isvalid')
 			question = form.save()
 			url = '/question/' + str(question.id)
 			#url = '/question/123'
 			return HttpResponseRedirect(url)
+		else:
+			print('invalid')
 	else:
 		form = AskForm()
 

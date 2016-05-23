@@ -1,3 +1,11 @@
+{% if form.non_field_errors %}
+  <div class="non-field-errors">
+    {% for err in form.non_field_errors %}
+      <p class="form-error">{{ err }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+
 <form class="form-horizontal" action="/ask/" method="post">
         {% csrf_token %}
 	<fieldset>

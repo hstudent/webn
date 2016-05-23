@@ -6,8 +6,20 @@ class AskForm(forms.Form):
 	text = forms.CharField(widget=forms.Textarea)
 
 	def clean(self):
+		title = self.cleaned_data.get('title')
+		text = self.cleaned_data.get('text')
 
-		pass
+		if title == None:
+                        raise forms.ValidationError('title is None')
+		title = title.strip()
+		if len(title) == 0:
+			raise forms.ValidationError('title len == 0')
+
+                if text == None:
+                        raise forms.ValidationError('text is None')
+		text = text.strip()
+                if len(text) == 0:
+                        raise forms.ValidationError('text len == 0')
 
 	def save(self):
 		_title = self.cleaned_data['title']
