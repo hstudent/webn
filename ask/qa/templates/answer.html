@@ -1,4 +1,5 @@
 <form class="form-horizontal" action="/answer/" method="post">
+	{% csrf_token %}
 	<fieldset>
 	{% for field in form %}
 	    <div class="fieldWrapper">
