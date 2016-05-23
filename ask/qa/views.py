@@ -38,10 +38,13 @@ def ask_view(request):
 	else:
 		form = AskForm()
 
-	return render(request, '/home/box/web/ask/qa/templates/ask.html', 
-		{
-		'form':form
-		})
+        c = { 'form':form }
+        c.update(csrf(request))
+
+	return render(request, '/home/box/web/ask/qa/templates/ask.html', c)
+		#{
+		#'form':form
+		#})
 
 def popular_view(request, *args, **kwargs):
         try:
