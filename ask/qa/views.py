@@ -1,3 +1,4 @@
+from django.core.context_processors import csrf
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import loader
@@ -12,14 +13,18 @@ def answer_view(request):
                 if form.is_valid():
                         answer = form.save()
                         url = '/question/' + str(answer.question_id)
+			#url = '/question/123/'
                         return HttpResponseRedirect(url)
         else:
                 form = AnswerForm()
 
-        return render(request, '/home/box/web/ask/qa/templates/answer.html', 
-                {
-                'form':form
-                })
+	c = { 'form':form }
+	c.update(csrf(request))
+
+        return render(request, '/home/box/web/ask/qa/templates/answer.html', c)
+                #{
+                #'form':form
+                #})
 
 
 def ask_view(request):
@@ -28,6 +33,7 @@ def ask_view(request):
 		if form.is_valid():
 			question = form.save()
 			url = '/question/' + str(question.id)
+			#url = '/question/123'
 			return HttpResponseRedirect(url)
 	else:
 		form = AskForm()
