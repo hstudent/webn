@@ -1,9 +1,41 @@
 from django.shortcuts import render, render_to_response
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
 from django.template import loader
 from models import Question, Answer
+from forms import AskForm, AnswerForm
 from django.http import Http404
 from django.core.paginator import Paginator
+
+def answer_view(request):
+        if request.method == "POST":
+                form = AnswerForm(request.POST)
+                if form.is_valid():
+                        answer = form.save()
+                        url = '/question/' + str(answer.question_id)
+                        return HttpResponseRedirect(url)
+        else:
+                form = AnswerForm()
+
+        return render(request, '/home/box/web/ask/qa/templates/answer.html', 
+                {
+                'form':form
+                })
+
+
+def ask_view(request):
+	if request.method == "POST":
+		form = AskForm(request.POST)
+		if form.is_valid():
+			question = form.save()
+			url = '/question/' + str(question.id)
+			return HttpResponseRedirect(url)
+	else:
+		form = AskForm()
+
+	return render(request, '/home/box/web/ask/qa/templates/ask.html', 
+		{
+		'form':form
+		})
 
 def popular_view(request, *args, **kwargs):
         try:

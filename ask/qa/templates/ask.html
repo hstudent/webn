@@ -1,0 +1,13 @@
+<form class="form-horizontal" action="/ask/" method="post">
+	<fieldset>
+	{% for field in form %}
+	    <div class="fieldWrapper">
+        	{{ field.errors }}
+	        {{ field.label_tag }} {{ field }}
+	    </div>
+	{% endfor %}
+	</fieldset>
+	<dif class="form-actions">
+		<button type="submit" class"btn btn-primary">Save</button>
+	</div>
+</form>
